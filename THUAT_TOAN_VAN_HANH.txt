@@ -1,0 +1,275 @@
+THUAT TOAN VA CACH VAN HANH CHUONG TRINH SAP XEP CAN BO COI THI
+=================================================================
+
+1. Mo hinh client - server
+--------------------------
+
+Chuong trinh gom 2 phan:
+
+- ExamClient:
+  + Hien giao dien Swing cho nguoi dung.
+  + Nhap so phong thi m va so giam thi n.
+  + Doc danh sach can bo tu file Excel.
+  + Hoac tai danh sach can bo va phong thi tu MySQL thong qua server.
+  + Gui doi tuong ScheduleRequest sang server qua TCP socket cong 5000.
+  + Nhan ScheduleResponse tu server, hien thi ket qua va xuat file Excel.
+
+- ExamServer:
+  + Lang nghe ket noi tai cong 5000.
+  + Nhan ScheduleRequest tu client.
+  + Goi ExamScheduler de sap xep danh sach.
+  + Luu ket qua vao MySQL neu ket noi duoc.
+  + Tra ScheduleResponse ve client.
+
+
+2. Kiem tra du lieu dau vao
+--------------------------
+
+Du lieu dau vao gom:
+
+- m: so phong thi.
+- n: so giam thi duoc su dung.
+- danh sach can bo doc tu Excel.
+- hoac danh sach can bo va phong thi doc tu MySQL.
+
+Dieu kien bat buoc:
+
+    n >= m * 2
+
+Vi moi phong can dung 2 giam thi. Neu n nho hon m * 2, server tra ve thong bao:
+
+    Khong du can bo, yeu cau nhap lai.
+
+Client cung kiem tra truoc dieu kien nay de bao loi nhanh cho nguoi dung.
+
+
+3. Doc danh sach tu file Excel
+-----------------------------
+
+Lop ExcelReader doc truc tiep file .xlsx bang co che ZIP/XML cua Java, khong can thu vien Apache POI.
+
+Quy trinh:
+
+1. Mo file .xlsx nhu mot file ZIP.
+2. Doc xl/sharedStrings.xml de lay cac chuoi dung chung trong Excel.
+3. Doc xl/worksheets/sheet1.xml de lay du lieu sheet dau tien.
+4. Tu nhan dien dong tieu de.
+5. Lay cac cot quan trong:
+   - Ma GV hoac ma can bo.
+   - Ho ten.
+   - Don vi cong tac.
+   - Phong cu neu file co cot nay.
+
+Neu file mau co cac cot TT, Ma GV, Ho Ten, Ngay sinh, Don vi cong tac thi chuong trinh se lay:
+
+- Ma can bo tu cot Ma GV.
+- Ho ten tu cot Ho Ten.
+- Don vi tu cot Don vi cong tac.
+- Phong cu de trong neu file khong co cot nay.
+
+
+3B. Tai du lieu tu MySQL
+-----------------------
+
+Neu nguoi dung bam nut Tai tu CSDL, client khong doc file Excel nua.
+
+Quy trinh:
+
+1. Client gui DbDataRequest sang server qua socket.
+2. Server dung DatabaseManager ket noi MySQL.
+3. Server doc bang danh_sach_gv:
+
+       SELECT ma_gv, ho_ten, don_vi_cong_tac FROM danh_sach_gv ORDER BY ma_gv
+
+4. Server doc bang danh_sach_phong:
+
+       SELECT phong_thi FROM danh_sach_phong ORDER BY phong_thi
+
+5. Server tra DbDataResponse ve client.
+6. Client dua danh sach can bo vao bang hien thi, dat so phong bang so dong trong danh_sach_phong, dat so giam thi bang so dong trong danh_sach_gv.
+
+Khi xep lich tu CSDL, chuong trinh dung chinh so phong trong bang danh_sach_phong. Vi du neu bang co phong_thi = 128 thi ket qua se hien Phong 128.
+
+
+3C. Xu ly trung ma GV, ma dai va dau nhay don
+--------------------------------------------
+
+Trong file Excel co the co nhieu can bo cung ma GV nhung khac truong dai hoc hoac don vi cong tac. Vi vay chuong trinh khong xem rieng ma_gv la khoa duy nhat cua mot can bo.
+
+Khoa noi bo de nhan dien mot can bo duoc tao tu 2 thong tin:
+
+    ma_gv + "_" + ngay_sinh
+
+Vi du:
+
+- Ma GV 123, Nguyen Van A, 24/10/1999, Truong Dai hoc Bach Khoa.
+- Ma GV 123, Nguyen Van A, 24/10/1999, Truong Dai hoc Su pham.
+
+Hai dong nay duoc xem la cung 1 nguoi (vi trung ma_gv va ngay_sinh). Chuong trinh se tu dong gop lai thanh 1 can bo duy nhat va noi ten truong lai voi nhau thanh: "Truong Dai hoc Bach Khoa - Truong Dai hoc Su pham".
+
+Ngay sinh duoc dua vao bang hien thi va file Excel ket qua de giao vien nhan phong phan biet ro hon. Viec gop ten don vi cong tac giup dam bao cung 1 giao vien khong bi xem la 2 nguoi khac nhau neu ho coi thi cho ca 2 truong.
+
+Chuong trinh xu ly ngay sinh theo cac dang:
+
+- So serial cua Excel, vi du 35591.
+- Dang thang/ngay/nam, vi du 10/24/1999.
+- Dang ngay/thang/nam, vi du 24/10/1999.
+- Dang chu tieng Anh, vi du 24-Oct-1999.
+
+Sau khi doc, ngay sinh duoc chuan hoa ve dang:
+
+    dd/MM/yyyy
+
+Trong CSDL, bang danh_sach_gv nen co cot id tu tang lam khoa chinh:
+
+    id BIGINT PRIMARY KEY AUTO_INCREMENT
+    ma_gv VARCHAR(100) NOT NULL
+
+Khong nen dat ma_gv la PRIMARY KEY, vi nhu vay MySQL se tu choi nhung dong trung ma.
+
+Ma GV dai nhu 109161101185 duoc luu bang VARCHAR(100), khong luu bang INT hoac BIGINT trong chuong trinh. Cach nay giu nguyen ma, ke ca khi ma co nhieu chu so hoac co so 0 o dau. Ma GV chi la mot thong tin dinh danh, khong duoc xem la duy nhat tuyet doi.
+
+Voi ten co dau nhay don, vi du:
+
+    R'Com Bao Phu
+
+Neu tu tao cau INSERT trong Excel thi phai doi dau ' thanh ''. Cong thuc Excel dung:
+
+    SUBSTITUTE(C1; "'"; "''")
+
+Khi chuong trinh Java luu ket qua vao MySQL, chuong trinh dung PreparedStatement. PreparedStatement tu xu ly ky tu dac biet nhu dau nhay don, nen khong bi loi cau SQL va khong can noi chuoi SQL bang tay.
+
+
+4. Thuat toan sap xep giam thi vao phong
+---------------------------------------
+
+Thuat toan nam trong lop ExamScheduler.
+
+Muc tieu:
+
+- Moi phong co dung 2 giam thi.
+- Khong lap lai cung mot cap giam thi trong mot lan sap xep.
+- Uu tien khong xep giam thi ve phong cu.
+- Danh sach duoc tron ngau nhien de moi lan sap xep co the ra ket qua khac nhau.
+
+Y tuong chinh:
+
+1. Doc danh sach Excel va loai trung. Sau do XAO TRON NGAU NHIEN (Shuffle) truoc khi lay dung n can bo. Dieu nay dam bao moi can bo (tu tren xuong duoi file) deu co co hoi duoc chon ngang nhau.
+2. Neu n < m * 2 thi dung va bao khong du can bo.
+3. Lap toi da 5000 lan de tim cach xep tot:
+   - Tao ban sao danh sach can bo.
+   - Tron ngau nhien danh sach bang Collections.shuffle.
+   - Duyet tung phong tu 1 den m.
+   - Voi moi phong, tim 2 can bo phu hop nhat trong danh sach con lai.
+
+Voi moi cap can bo ung vien:
+
+- Neu cap nay da tung duoc ghep trong lan sap xep hien tai thi bo qua.
+- Tinh diem phat:
+  + 0 diem neu ca hai khong trung phong cu.
+  + 1 diem neu mot nguoi trung phong cu.
+  + 2 diem neu ca hai nguoi trung phong cu.
+
+Thuat toan uu tien lay mau ngau nhien (random sampling) len toi 50 lan de tim ra ngay cap can bo co diem phat = 0 nhanh nhat. Neu khong tim duoc, no se quet mang 2 chieu (O(N^2)) va dung Reservoir Sampling (random.nextInt(tieCount) == 0) de chon ra cap toi uu. Cach nay dam bao toc do luon tu tich tac ma van vo cung cong bang va khong bi lap cap.
+
+Sau khi chon duoc cap:
+
+- Them cap vao danh sach phan cong phong.
+- Xoa 2 can bo nay khoi danh sach con lai.
+- Ghi lai cap nay vao tap usedPairs de khong ghep lai lan nua.
+
+Sau 5000 lan thu, chuong trinh lay cach sap xep co tong diem phat nho nhat.
+
+Neu tong diem phat bang 0:
+
+- Tat ca can bo deu khong bi xep ve phong cu.
+
+Neu tong diem phat lon hon 0:
+
+- Van sap xep thanh cong, nhung co mot so can bo khong the tranh phong cu do rang buoc qua chat.
+
+
+5. Cach tranh lap cap giam thi
+-----------------------------
+
+Moi cap giam thi duoc tao khoa rieng theo khoa noi bo cua can bo:
+
+    khoaCanBoNhoHon|khoaCanBoLonHon
+
+Vi du:
+
+    123#nguyen van a#bach khoa|456#tran van b#su pham
+
+Neu gap lai cap theo thu tu nguoc thi van tao ra cung mot khoa. Nho vay, chuong trinh nhan biet day la cung mot cap va khong ghep lai lan nua.
+
+Tap usedPairs dung de luu cac cap da xuat hien trong lan sap xep hien tai.
+
+
+6. Cach tranh phong cu
+---------------------
+
+Moi can bo co truong oldRoom.
+
+Khi dang xep phong so k:
+
+- Neu oldRoom cua can bo bang k thi can bo do bi tinh 1 diem phat.
+- Neu oldRoom khac k hoac khong co du lieu phong cu thi tinh 0 diem.
+
+Thuat toan khong loai bo tuyet doi can bo trung phong cu, ma uu tien tranh bang cach chon cap co diem phat thap nhat. Cach nay giup chuong trinh van tim duoc lich trong truong hop du lieu qua chat.
+
+
+7. Sap xep can bo hanh lang
+--------------------------
+
+Sau khi xep xong m phong:
+
+- Co m * 2 can bo duoc dua vao phong thi.
+- Cac can bo con lai trong n nguoi duoc chuyen sang danh sach giam sat hanh lang.
+
+Thuat toan chia deu so luong phong cho so luong can bo hanh lang theo ty le dong deu tuyet doi (Uniform Scaling):
+
+    startIndex = (i * soPhong) / soCanBo
+    endIndex = ((i + 1) * soPhong - 1) / soCanBo
+
+Quy tac nay giup:
+- Neu so can bo it hon so phong: Moi can bo se duoc chia deu 1 khoang phong lien tiep (vi du: Tu phong 1 den phong 5).
+- Neu so can bo nhieu hon so phong: Mot phong se duoc nhieu can bo cung giam sat. Thuat toan se dong deu phan bo cac can bo vao cac phong ma khong bi truong hop tap trung toan bo can bo du vao phong cuoi cung.
+
+Vi du (5 phong, 10 can bo hanh lang):
+- Can bo 1: Phong 1 den phong 1
+- Can bo 2: Phong 1 den phong 1
+- Can bo 3: Phong 2 den phong 2
+... 
+Moi phong se co chinh xac 2 can bo giam sat chung. Thuat toan luon dam bao su chia deu trong moi truong hop.
+
+
+8. Xuat file Excel
+-----------------
+
+Lop ExcelExporter tao file .xls dang bang HTML ma Microsoft Excel mo duoc.
+
+File xuat gom:
+
+- Quoc hieu: CONG HOA XA HOI CHU NGHIA VIET NAM.
+- Tieu ngu: Doc lap - Tu do - Hanh phuc.
+- Tieu de: DANH SACH CAN BO COI THI.
+- Bang phan cong phong thi.
+- Bang danh sach can bo giam sat hanh lang, co cot tu phong va den phong.
+
+
+9. Nut Lam moi
+--------------
+
+Nut Lam moi tren giao dien dung de dua chuong trinh ve trang thai ban dau:
+
+- Xoa danh sach can bo da doc tu Excel.
+- Xoa bang ket qua.
+- Xoa duong dan file Excel.
+- Dat so phong va so giam thi ve 1.
+- Xoa ket qua sap xep cu de tranh xuat nham file.
+
+
+10. Tong ket
+-----------
+
+Thuat toan cua bai dung cach tron ngau nhien ket hop tim cap co diem phat thap nhat. Nho vay ket qua co tinh ngau nhien, khong lap cap trong mot lan sap xep, uu tien tranh phong cu va van dam bao chia du can bo hanh lang khi so giam thi lon hon nhu cau coi thi trong phong.

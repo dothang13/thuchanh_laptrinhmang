@@ -1,0 +1,784 @@
+﻿STT,Phòng thi ,Ghi chú
+1,128,Đà nẵng
+2,129,Đà nẵng
+3,130,Đà nẵng
+4,131,Đà nẵng
+5,132,Đà nẵng
+6,133,Đà nẵng
+7,134,Đà nẵng
+8,135,Đà nẵng
+9,136,Đà nẵng
+10,137,Đà nẵng
+11,138,Đà nẵng
+12,139,Đà nẵng
+13,140,Đà nẵng
+14,141,Đà nẵng
+15,142,Đà nẵng
+16,143,Đà nẵng
+17,144,Đà nẵng
+18,145,Đà nẵng
+19,146,Đà nẵng
+20,147,Đà nẵng
+21,148,Đà nẵng
+22,149,Đà nẵng
+23,150,Huế
+24,151,Huế
+25,152,Huế
+26,153,Huế
+27,154,Huế
+28,155,Huế
+29,156,Huế
+30,157,Huế
+31,158,Huế
+32,159,Huế
+33,160,Huế
+34,161,Huế
+35,162,Huế
+36,163,Huế
+37,164,Huế
+38,165,Huế
+39,166,Huế
+40,167,Huế
+41,168,Huế
+42,169,Huế
+43,170,Huế
+44,171,Huế
+45,172,Huế
+46,173,Huế
+47,174,Huế
+48,175,Huế
+49,176,Huế
+50,177,Huế
+51,178,Huế
+52,179,Huế
+53,180,Huế
+54,181,Huế
+55,182,Huế
+56,183,Huế
+57,184,Huế
+58,185,Huế
+59,186,Huế
+60,187,Huế
+61,188,Huế
+62,189,Huế
+63,190,Huế
+64,191,Huế
+65,192,Huế
+66,193,Huế
+67,194,Huế
+68,195,Huế
+69,196,Huế
+70,197,Huế
+71,198,Huế
+72,199,Huế
+73,200,Huế
+74,201,Huế
+75,202,Huế
+76,203,Huế
+77,204,Huế
+78,205,Huế
+79,206,Huế
+80,207,Huế
+81,208,Huế
+82,209,Huế
+83,210,Huế
+84,211,Huế
+85,212,Huế
+86,213,Huế
+87,214,Huế
+88,215,Huế
+89,216,Huế
+90,217,Huế
+91,218,Huế
+92,219,Huế
+93,220,Huế
+94,221,Huế
+95,222,Huế
+96,223,Huế
+97,224,Huế
+98,225,Huế
+99,226,Huế
+100,227,Huế
+101,228,Huế
+102,229,Huế
+103,230,Quy Nhơn
+104,231,Quy Nhơn
+105,232,Quy Nhơn
+106,233,Quy Nhơn
+107,234,Quy Nhơn
+108,235,Quy Nhơn
+109,236,Quy Nhơn
+110,237,Quy Nhơn
+111,238,Quy Nhơn
+112,239,Quy Nhơn
+113,240,Quy Nhơn
+114,241,Quy Nhơn
+115,242,Quy Nhơn
+116,243,Quy Nhơn
+117,244,Quy Nhơn
+118,245,Quy Nhơn
+119,246,Quy Nhơn
+120,247,Quy Nhơn
+121,248,Quy Nhơn
+122,249,Quy Nhơn
+123,250,TP Hồ Chí Minh
+124,251,TP Hồ Chí Minh
+125,252,TP Hồ Chí Minh
+126,253,TP Hồ Chí Minh
+127,254,TP Hồ Chí Minh
+128,255,TP Hồ Chí Minh
+129,256,TP Hồ Chí Minh
+130,257,TP Hồ Chí Minh
+131,258,TP Hồ Chí Minh
+132,259,TP Hồ Chí Minh
+133,260,TP Hồ Chí Minh
+134,261,TP Hồ Chí Minh
+135,262,TP Hồ Chí Minh
+136,263,TP Hồ Chí Minh
+137,264,TP Hồ Chí Minh
+138,265,TP Hồ Chí Minh
+139,266,TP Hồ Chí Minh
+140,267,TP Hồ Chí Minh
+141,268,TP Hồ Chí Minh
+142,269,TP Hồ Chí Minh
+143,270,Hà Nội
+144,271,Hà Nội
+145,272,Hà Nội
+146,273,Hà Nội
+147,274,Hà Nội
+148,275,Hà Nội
+149,276,Hà Nội
+150,277,Hà Nội
+151,278,Hà Nội
+152,279,Hà Nội
+153,280,Hà Nội
+154,281,Hà Nội
+155,282,Hà Nội
+156,283,Hà Nội
+157,284,Hà Nội
+158,285,Hà Nội
+159,286,Hà Nội
+160,287,Hà Nội
+161,288,Hà Nội
+162,289,Hà Nội
+163,290,Hà Nội
+164,291,Hà Nội
+165,292,Hà Nội
+166,293,Hải phòng
+167,294,Hải phòng
+168,295,Hải phòng
+169,296,Hải phòng
+170,297,Hải phòng
+171,298,Hải phòng
+172,299,Hải phòng
+173,300,Hải phòng
+174,301,Hải phòng
+175,302,Hải phòng
+176,303,Hải phòng
+177,304,Hải phòng
+178,305,Hải phòng
+179,306,Hải phòng
+180,307,Hải phòng
+181,308,Hải phòng
+182,309,Hải phòng
+183,310,Hải phòng
+184,311,Hải phòng
+185,312,Hải phòng
+186,313,Hải phòng
+187,314,Hải phòng
+188,315,Hải phòng
+189,316,Hải phòng
+190,317,Hải phòng
+191,318,Hải phòng
+192,319,Hải phòng
+193,320,Hải phòng
+194,321,Hải phòng
+195,322,Hải phòng
+196,323,Hải phòng
+197,324,Hải phòng
+198,325,Hải phòng
+199,326,Hải phòng
+200,327,Hải phòng
+201,328,Hải phòng
+202,329,Hải phòng
+203,330,Hải phòng
+204,331,Hải phòng
+205,332,Hải phòng
+206,333,Hải phòng
+207,334,Hải phòng
+208,335,Hải phòng
+209,336,Hải phòng
+210,337,Hải phòng
+211,338,Hải phòng
+212,339,Hải phòng
+213,340,Hải phòng
+214,341,Hải phòng
+215,342,Hải phòng
+216,343,Hải phòng
+217,344,Hải phòng
+218,345,Hải phòng
+219,346,Hải phòng
+220,347,Hải phòng
+221,348,Hải phòng
+222,349,Hải phòng
+223,350,Hải phòng
+224,351,Hải phòng
+225,352,Hải phòng
+226,353,Hải phòng
+227,354,Hải phòng
+228,355,Hải phòng
+229,356,Hải phòng
+230,357,Hải phòng
+231,358,Hải phòng
+232,359,Hải phòng
+233,360,Hải phòng
+234,361,Hải phòng
+235,362,Hải phòng
+236,363,Hải phòng
+237,364,Hải phòng
+238,365,Hải phòng
+239,366,Hải phòng
+240,367,Hải phòng
+241,368,Hải phòng
+242,369,Hải phòng
+243,370,Hải phòng
+244,371,Hải phòng
+245,372,Hải phòng
+246,373,Hải phòng
+247,374,Hải phòng
+248,375,Hải phòng
+249,376,Hải phòng
+250,377,Hải phòng
+251,378,Hải phòng
+252,379,Hải phòng
+253,380,Hải phòng
+254,381,Hải phòng
+255,382,Hải phòng
+256,383,Hải phòng
+257,384,Hải phòng
+258,385,Hải phòng
+259,386,Hải phòng
+260,387,Hải phòng
+261,388,Hải phòng
+262,389,Hải phòng
+263,390,Hải phòng
+264,391,Hải phòng
+265,392,Hải phòng
+266,393,Hải phòng
+267,394,Hải phòng
+268,395,Hải phòng
+269,396,Hải phòng
+270,397,Hải phòng
+271,398,Hải phòng
+272,399,Hải phòng
+273,400,Hải phòng
+274,401,Hải phòng
+275,402,Hải phòng
+276,403,Hải phòng
+277,404,Hải phòng
+278,405,Hải phòng
+279,406,Hải phòng
+280,407,Hải phòng
+281,408,Hải phòng
+282,409,Hải phòng
+283,410,Hải phòng
+284,411,Hải phòng
+285,412,Hải phòng
+286,413,Hải phòng
+287,414,Hải phòng
+288,415,Hải phòng
+289,416,Hải phòng
+290,417,Hải phòng
+291,418,Hải phòng
+292,419,Hải phòng
+293,420,Hải phòng
+294,421,Hải phòng
+295,422,Hải phòng
+296,423,Hải phòng
+297,424,Hải phòng
+298,425,Hải phòng
+299,426,Hải phòng
+300,427,Hải phòng
+301,428,Hải phòng
+302,429,Hải phòng
+303,430,Hải phòng
+304,431,Hải phòng
+305,432,Hải phòng
+306,433,Hải phòng
+307,434,Hải phòng
+308,435,Hải phòng
+309,436,Hải phòng
+310,437,Hải phòng
+311,438,Hải phòng
+312,439,Hải phòng
+313,440,Hải phòng
+314,441,Hải phòng
+315,442,Hải phòng
+316,443,Thanh Hóa
+317,444,Thanh Hóa
+318,445,Thanh Hóa
+319,446,Thanh Hóa
+320,447,Thanh Hóa
+321,448,Thanh Hóa
+322,449,Thanh Hóa
+323,450,Thanh Hóa
+324,451,Thanh Hóa
+325,452,Thanh Hóa
+326,453,Thanh Hóa
+327,454,Thanh Hóa
+328,455,Thanh Hóa
+329,456,Thanh Hóa
+330,457,Thanh Hóa
+331,458,Thanh Hóa
+332,459,Thanh Hóa
+333,460,Thanh Hóa
+334,461,Thanh Hóa
+335,462,Thanh Hóa
+336,463,Thanh Hóa
+337,464,Thanh Hóa
+338,465,Thanh Hóa
+339,466,Thanh Hóa
+340,467,Thanh Hóa
+341,468,Thanh Hóa
+342,469,Thanh Hóa
+343,470,Nghệ An
+344,471,Nghệ An
+345,472,Nghệ An
+346,473,Nghệ An
+347,474,Nghệ An
+348,475,Nghệ An
+349,476,Nghệ An
+350,477,Nghệ An
+351,478,Nghệ An
+352,479,Nghệ An
+353,480,Nghệ An
+354,481,Nghệ An
+355,482,Nghệ An
+356,483,Nghệ An
+357,484,Nghệ An
+358,485,Nghệ An
+359,486,Nghệ An
+360,487,Nghệ An
+361,488,Nghệ An
+362,489,Nghệ An
+363,490,Nghệ An
+364,491,Nghệ An
+365,492,Nghệ An
+366,493,Nghệ An
+367,494,Nghệ An
+368,495,Nghệ An
+369,496,Nghệ An
+370,497,Nghệ An
+371,498,Nghệ An
+372,499,Nghệ An
+373,500,Nghệ An
+374,501,Nghệ An
+375,502,Nghệ An
+376,503,Nghệ An
+377,504,Nghệ An
+378,505,Nghệ An
+379,506,Nghệ An
+380,507,Nghệ An
+381,508,Nghệ An
+382,509,Nghệ An
+383,510,Nghệ An
+384,511,Nghệ An
+385,512,Nghệ An
+386,513,Nghệ An
+387,514,Nghệ An
+388,515,Nghệ An
+389,516,Nghệ An
+390,517,Nghệ An
+391,518,Nghệ An
+392,519,Nghệ An
+393,520,Nghệ An
+394,521,Nghệ An
+395,522,Nghệ An
+396,523,Nghệ An
+397,524,Nghệ An
+398,525,Nghệ An
+399,526,Nghệ An
+400,527,Nghệ An
+401,528,Nghệ An
+402,529,Nghệ An
+403,530,Nghệ An
+404,531,Nghệ An
+405,532,Nghệ An
+406,533,Nghệ An
+407,534,Nghệ An
+408,535,Nghệ An
+409,536,Nghệ An
+410,537,Nghệ An
+411,538,Nghệ An
+412,539,Nghệ An
+413,540,Nghệ An
+414,541,Nghệ An
+415,542,Nghệ An
+416,543,Nghệ An
+417,544,Nghệ An
+418,545,Nghệ An
+419,546,Nghệ An
+420,547,Nghệ An
+421,548,Nghệ An
+422,549,Nghệ An
+423,550,Hà Tĩnh
+424,551,Hà Tĩnh
+425,552,Hà Tĩnh
+426,553,Hà Tĩnh
+427,554,Hà Tĩnh
+428,555,Hà Tĩnh
+429,556,Hà Tĩnh
+430,557,Hà Tĩnh
+431,558,Hà Tĩnh
+432,559,Hà Tĩnh
+433,560,Hà Tĩnh
+434,561,Hà Tĩnh
+435,562,Hà Tĩnh
+436,563,Hà Tĩnh
+437,564,Hà Tĩnh
+438,565,Hà Tĩnh
+439,566,Hà Tĩnh
+440,567,Hà Tĩnh
+441,568,Hà Tĩnh
+442,569,Hà Tĩnh
+443,570,Hà Tĩnh
+444,571,Hà Tĩnh
+445,572,Hà Tĩnh
+446,573,Hà Tĩnh
+447,574,Hà Tĩnh
+448,575,Hà Tĩnh
+449,576,Hà Tĩnh
+450,577,Hà Tĩnh
+451,578,Hà Tĩnh
+452,579,Hà Tĩnh
+453,580,Hà Tĩnh
+454,581,Hà Tĩnh
+455,582,Hà Tĩnh
+456,583,Hà Tĩnh
+457,584,Hà Tĩnh
+458,585,Hà Tĩnh
+459,586,Hà Tĩnh
+460,587,Hà Tĩnh
+461,588,Hà Tĩnh
+462,589,Hà Tĩnh
+463,590,Quảng trị
+464,591,Quảng trị
+465,592,Quảng trị
+466,593,Quảng trị
+467,594,Quảng trị
+468,595,Quảng trị
+469,596,Quảng trị
+470,597,Quảng trị
+471,598,Quảng trị
+472,599,Quảng trị
+473,600,Quảng trị
+474,601,Quảng trị
+475,602,Quảng trị
+476,603,Quảng trị
+477,604,Quảng trị
+478,605,Quảng trị
+479,606,Quảng trị
+480,607,Quảng trị
+481,608,Quảng trị
+482,609,Quảng trị
+483,610,Quảng trị
+484,611,Quảng trị
+485,612,Quảng trị
+486,613,Quảng trị
+487,614,Quảng trị
+488,615,Quảng trị
+489,616,Quảng trị
+490,617,Quảng trị
+491,618,Quảng trị
+492,619,Quảng trị
+493,620,Quảng trị
+494,621,Quảng trị
+495,622,Quảng trị
+496,623,Quảng trị
+497,624,Quảng trị
+498,625,Quảng trị
+499,626,Quảng trị
+500,627,Quảng trị
+501,628,Quảng trị
+502,629,Quảng trị
+503,630,Quảng trị
+504,631,Quảng trị
+505,632,Quảng trị
+506,633,Quảng trị
+507,634,Quảng trị
+508,635,Quảng trị
+509,636,Quảng trị
+510,637,Quảng trị
+511,638,Quảng trị
+512,639,Quảng trị
+513,640,Quảng trị
+514,641,Thanh Hóa
+515,642,Thanh Hóa
+516,643,Thanh Hóa
+517,644,Thanh Hóa
+518,645,Thanh Hóa
+519,646,Thanh Hóa
+520,647,Thanh Hóa
+521,648,Nghệ An
+522,649,Nghệ An
+523,650,Nghệ An
+524,651,Nghệ An
+525,652,Nghệ An
+526,653,Nghệ An
+527,654,Nghệ An
+528,655,Nghệ An
+529,656,Nghệ An
+530,657,Nghệ An
+531,658,Nghệ An
+532,659,Nghệ An
+533,660,Nghệ An
+534,661,Nghệ An
+535,662,Nghệ An
+536,663,Nghệ An
+537,664,Nghệ An
+538,665,Nghệ An
+539,666,Nghệ An
+540,667,Nghệ An
+541,668,Nghệ An
+542,669,Nghệ An
+543,670,Nghệ An
+544,671,Nghệ An
+545,672,Nghệ An
+546,673,Nghệ An
+547,674,Nghệ An
+548,675,Nghệ An
+549,676,Nghệ An
+550,677,Nghệ An
+551,678,Nghệ An
+552,679,Nghệ An
+553,680,Nghệ An
+554,681,Nghệ An
+555,682,Nghệ An
+556,683,Nghệ An
+557,684,Nghệ An
+558,685,Nghệ An
+559,686,Nghệ An
+560,687,Nghệ An
+561,688,Nghệ An
+562,689,Nghệ An
+563,690,Nghệ An
+564,691,Nghệ An
+565,692,Nghệ An
+566,693,Nghệ An
+567,694,Nghệ An
+568,695,Nghệ An
+569,696,Nghệ An
+570,697,Nghệ An
+571,698,Nghệ An
+572,699,Nghệ An
+573,700,Nghệ An
+574,701,Nghệ An
+575,702,Nghệ An
+576,703,Nghệ An
+577,704,Nghệ An
+578,705,Nghệ An
+579,706,Nghệ An
+580,707,Nghệ An
+581,708,Nghệ An
+582,709,Nghệ An
+583,710,Nghệ An
+584,711,Nghệ An
+585,712,Nghệ An
+586,713,Nghệ An
+587,714,Nghệ An
+588,715,Nghệ An
+589,716,Nghệ An
+590,717,Nghệ An
+591,718,Nghệ An
+592,719,Nghệ An
+593,720,Nghệ An
+594,721,Nghệ An
+595,722,Nghệ An
+596,723,Nghệ An
+597,724,Nghệ An
+598,725,Nghệ An
+599,726,Nghệ An
+600,727,Nghệ An
+601,728,Hà Tĩnh
+602,729,Hà Tĩnh
+603,730,Hà Tĩnh
+604,731,Hà Tĩnh
+605,732,Hà Tĩnh
+606,733,Hà Tĩnh
+607,734,Hà Tĩnh
+608,735,Hà Tĩnh
+609,736,Hà Tĩnh
+610,737,Hà Tĩnh
+611,738,Hà Tĩnh
+612,739,Hà Tĩnh
+613,740,Hà Tĩnh
+614,741,Hà Tĩnh
+615,742,Hà Tĩnh
+616,743,Hà Tĩnh
+617,744,Hà Tĩnh
+618,745,Hà Tĩnh
+619,746,Hà Tĩnh
+620,747,Hà Tĩnh
+621,748,Hà Tĩnh
+622,749,Hà Tĩnh
+623,750,Hà Tĩnh
+624,751,Hà Tĩnh
+625,752,Hà Tĩnh
+626,753,Hà Tĩnh
+627,754,Hà Tĩnh
+628,755,Hà Tĩnh
+629,756,Hà Tĩnh
+630,757,Hà Tĩnh
+631,758,Hà Tĩnh
+632,759,Hà Tĩnh
+633,760,Hà Tĩnh
+634,761,Hà Tĩnh
+635,762,Hà Tĩnh
+636,763,Hà Tĩnh
+637,764,Hà Tĩnh
+638,765,Hà Tĩnh
+639,766,Hà Tĩnh
+640,767,Hà Tĩnh
+641,768,Quảng trị
+642,769,Quảng trị
+643,770,Quảng trị
+644,771,Quảng trị
+645,772,Quảng trị
+646,773,Quảng trị
+647,774,Quảng trị
+648,775,Quảng trị
+649,776,Quảng trị
+650,777,Quảng trị
+651,778,Quảng trị
+652,779,Quảng trị
+653,780,Quảng trị
+654,781,Quảng trị
+655,782,Quảng trị
+656,783,Quảng trị
+657,784,Quảng trị
+658,785,Quảng trị
+659,786,Quảng trị
+660,787,Quảng trị
+661,788,Quảng trị
+662,789,Quảng trị
+663,790,Quảng trị
+664,791,Quảng trị
+665,792,Quảng trị
+666,793,Quảng trị
+667,794,Quảng trị
+668,795,Quảng trị
+669,796,Quảng trị
+670,797,Quảng trị
+671,798,Quảng trị
+672,799,Quảng trị
+673,800,Quảng trị
+674,801,Quảng trị
+675,802,Quảng trị
+676,803,Quảng trị
+677,804,Quảng trị
+678,805,Quảng trị
+679,806,Quảng trị
+680,807,Quảng trị
+681,808,Quảng trị
+682,809,Quảng trị
+683,810,Quảng trị
+684,811,Quảng trị
+685,812,Quảng trị
+686,813,Quảng trị
+687,814,Quảng trị
+688,815,Quảng trị
+689,816,Quảng trị
+690,817,Quảng trị
+691,818,Quảng trị
+692,819,Gia Lai
+693,820,Bình Định
+694,821,Quảng trị
+695,822,Quảng trị
+696,823,Quảng trị
+697,824,Quảng trị
+698,825,Quảng trị
+699,826,Quảng trị
+700,827,Quảng trị
+701,828,Quảng trị
+702,829,Quảng trị
+703,830,Quảng trị
+704,831,Quảng trị
+705,832,Quảng trị
+706,833,Quảng trị
+707,834,Quảng trị
+708,835,Quảng trị
+709,836,Quảng trị
+710,837,Quảng trị
+711,838,Quảng trị
+712,839,Quảng trị
+713,840,Quảng trị
+714,841,Quảng trị
+715,842,Gia Lai
+716,843,Bình Định
+717,844,Quảng trị
+718,845,Quảng trị
+719,846,Quảng trị
+720,847,Quảng trị
+721,848,Quảng trị
+722,849,Quảng trị
+723,850,Quảng trị
+724,851,Quảng trị
+725,852,Quảng trị
+726,853,Quảng trị
+727,854,Quảng trị
+728,855,Quảng trị
+729,856,Quảng trị
+730,857,Quảng trị
+731,858,Quảng trị
+732,859,Quảng trị
+733,860,Quảng trị
+734,861,Quảng trị
+735,862,Quảng trị
+736,863,Quảng trị
+737,864,Quảng trị
+738,865,Gia Lai
+739,866,Bình Định
+740,867,Quảng trị
+741,868,Quảng trị
+742,869,Quảng trị
+743,870,Quảng trị
+744,871,Quảng trị
+745,872,Quảng trị
+746,873,Quảng trị
+747,874,Quảng trị
+748,875,Quảng trị
+749,876,Quảng trị
+750,877,Quảng trị
+751,878,Quảng trị
+752,879,Quảng trị
+753,880,Quảng trị
+754,881,Quảng trị
+755,882,Quảng trị
+756,883,Quảng trị
+757,884,Quảng trị
+758,885,Quảng trị
+759,886,Quảng trị
+760,887,Quảng trị
+761,888,Gia Lai
+762,889,Bình Định
+763,890,Huế
+764,891,Huế
+765,892,Huế
+766,893,Huế
+767,894,Huế
+768,895,Huế
+769,896,Huế
+770,897,Huế
+771,898,Huế
+772,899,Huế
+773,900,Huế
+774,901,Huế
+775,902,Huế
+776,903,Huế
+777,904,Huế
+778,905,Huế
+779,906,Huế
+780,907,Huế
+781,908,Huế
+782,909,Huế
+783,910,Huế

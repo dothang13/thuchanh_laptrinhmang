@@ -1,0 +1,21 @@
+-- Chỉ định sử dụng database của bạn (theo code Java là QuanLyCoiThi)
+CREATE DATABASE IF NOT EXISTS QuanLyCoiThi CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE QuanLyCoiThi;
+
+-- ========================================================
+-- 1. Bảng lưu dữ liệu từ Sheet 1 (Danh sách Giáo viên)
+-- ========================================================
+CREATE TABLE danh_sach_gv (
+    ma_gv VARCHAR(50) PRIMARY KEY,   -- Khớp cột "Mã GV"
+    ho_ten VARCHAR(150) NOT NULL,    -- Khớp cột "Họ Tên"
+    ngay_sinh DATE,                  -- Khớp cột "Ngày sinh" (Yêu cầu file CSV dạng YYYY-MM-DD)
+    don_vi_cong_tac VARCHAR(255)     -- Khớp cột "Đơn vị công tác"
+);
+
+-- ========================================================
+-- 2. Bảng lưu dữ liệu từ Sheet 2 (Danh sách Phòng thi)
+-- ========================================================
+CREATE TABLE danh_sach_phong (
+    phong_thi INT PRIMARY KEY,       -- Khớp cột "Phòng thi"
+    ghi_chu VARCHAR(255)             -- Khớp cột "Ghi chú"
+);
