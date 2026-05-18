@@ -6,7 +6,7 @@ USE QuanLyCoiThi;
 -- 1. Bảng lưu dữ liệu từ Sheet 1 (Danh sách Giáo viên)
 -- ========================================================
 CREATE TABLE danh_sach_gv (
-    ma_gv VARCHAR(50) PRIMARY KEY,   -- Khớp cột "Mã GV"
+    ma_gv VARCHAR(100) PRIMARY KEY,   -- Khớp cột "Mã GV"
     ho_ten VARCHAR(150) NOT NULL,    -- Khớp cột "Họ Tên"
     ngay_sinh DATE,                  -- Khớp cột "Ngày sinh" (Yêu cầu file CSV dạng YYYY-MM-DD)
     don_vi_cong_tac VARCHAR(255)     -- Khớp cột "Đơn vị công tác"

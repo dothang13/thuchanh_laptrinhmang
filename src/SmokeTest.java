@@ -4,7 +4,8 @@ import java.util.List;
 public class SmokeTest {
     public static void main(String[] args) throws Exception {
         File excel = new File("..", "Danh sach can bo coi thi.xlsx");
-        List<ExamOfficer> officers = new ExcelReader().read(excel);
+        ExcelData data = new ExcelReader().read(excel);
+        List<ExamOfficer> officers = data.getOfficers();
         System.out.println("So can bo doc duoc: " + officers.size());
         ScheduleResponse response = new ExamScheduler().schedule(new ScheduleRequest(100, 220, officers));
         System.out.println(response.getMessage());

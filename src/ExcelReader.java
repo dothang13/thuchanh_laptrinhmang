@@ -18,7 +18,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 public class ExcelReader {
-    public List<ExamOfficer> read(File file) throws Exception {
+    public ExcelData read(File file) throws Exception {
         try (ZipFile zip = new ZipFile(file)) {
             List<String> sharedStrings = readSharedStrings(zip);
             Document sheet = readXml(zip, "xl/worksheets/sheet1.xml");
@@ -60,7 +60,28 @@ public class ExcelReader {
                     officers.put(key, new ExamOfficer(id, name, birthDate, unit, oldRoom));
                 }
             }
-            return new ArrayList<>(officers.values());
+            List<ExamOfficer> officerList = new ArrayList<>(officers.values());
+
+            List<Integer> roomList = new ArrayList<>();
+            try {
+                Document sheet2 = readXml(zip, "xl/worksheets/sheet2.xml");
+                NodeList rowNodes2 = sheet2.getElementsByTagName("row");
+                for (int i = 0; i < rowNodes2.getLength(); i++) {
+                    Element row = (Element) rowNodes2.item(i);
+                    Map<String, String> values = readRow(row, sharedStrings);
+                    String roomStr = first(values, "B", "1");
+                    if (roomStr != null && roomStr.matches("\\d+")) {
+                        int roomNum = Integer.parseInt(roomStr);
+                        if (!roomList.contains(roomNum)) {
+                            roomList.add(roomNum);
+                        }
+                    }
+                }
+            } catch (Exception ex) {
+                // Ignore if sheet 2 does not exist or has an error
+            }
+
+            return new ExcelData(officerList, roomList);
         }
     }
 

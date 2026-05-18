@@ -209,15 +209,19 @@ public class ExamClient extends JFrame {
         }
         File file = chooser.getSelectedFile();
         try {
-            List<ExamOfficer> loaded = new ExcelReader().read(file);
+            ExcelData loaded = new ExcelReader().read(file);
             officers.clear();
             roomsFromDatabase.clear();
-            officers.addAll(loaded);
+            officers.addAll(loaded.getOfficers());
+            roomsFromDatabase.addAll(loaded.getRooms());
             officerModel.setRowCount(0);
             for (ExamOfficer officer : officers) {
                 officerModel.addRow(new Object[]{officer.getId(), officer.getName(), officer.getBirthDate(), officer.getUnit(), officer.getOldRoom()});
             }
             officerSpinner.setValue(Math.max(1, officers.size()));
+            if (!roomsFromDatabase.isEmpty()) {
+                roomSpinner.setValue(Math.max(1, roomsFromDatabase.size()));
+            }
             fileField.setText(file.getAbsolutePath());
         } catch (Exception ex) {
             showError("Không đọc được file Excel: " + ex.getMessage());
