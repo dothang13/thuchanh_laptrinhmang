@@ -47,8 +47,8 @@ public class ExamServer {
 
             ScheduleResponse response = scheduler.schedule(request);
             if (response.isSuccess()) {
-                databaseManager.save(request, response);
-                System.out.println("   [" + clientInfo + "] Sap xep thanh cong. Da luu vao CSDL.");
+                response = databaseManager.save(request, response);
+                System.out.println("   [" + clientInfo + "] Sap xep thanh cong. Da luu vao CSDL (" + response.getScheduleName() + ").");
             } else {
                 System.out.println("   [" + clientInfo + "] Sap xep that bai: " + response.getMessage());
             }

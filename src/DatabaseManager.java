@@ -32,14 +32,35 @@ public class DatabaseManager {
         }
     }
 
-    public void save(ScheduleRequest request, ScheduleResponse response) {
+    public ScheduleResponse save(ScheduleRequest request, ScheduleResponse response) {
         try (Connection connection = getConnection()) {
             createTables(connection);
-            long scheduleId = insertSchedule(connection, request, response);
-            insertRooms(connection, scheduleId, response);
-            insertCorridors(connection, scheduleId, response);
+            String scheduleName = getNextScheduleName(connection);
+            ScheduleResponse namedResponse = response.withScheduleName(scheduleName);
+            long scheduleId = insertSchedule(connection, request, namedResponse);
+            insertRooms(connection, scheduleId, namedResponse);
+            insertCorridors(connection, scheduleId, namedResponse);
+            return namedResponse;
         } catch (SQLException ex) {
             System.out.println("Khong the luu MySQL: " + ex.getMessage());
+            return response;
+        }
+    }
+
+    private String getNextScheduleName(Connection connection) throws SQLException {
+        try (Statement statement = connection.createStatement();
+             ResultSet rs = statement.executeQuery("SELECT ten_danh_sach FROM lich_coi_thi WHERE ten_danh_sach LIKE 'DANH_SACH_CAN_BO_COI_THI_CA_%' ORDER BY id DESC")) {
+            int maxCa = 0;
+            while (rs.next()) {
+                String name = rs.getString(1);
+                if (name != null) {
+                    try {
+                        int ca = Integer.parseInt(name.substring("DANH_SACH_CAN_BO_COI_THI_CA_".length()));
+                        if (ca > maxCa) maxCa = ca;
+                    } catch (Exception ignored) {}
+                }
+            }
+            return "DANH_SACH_CAN_BO_COI_THI_CA_" + (maxCa + 1);
         }
     }
 
@@ -57,6 +78,7 @@ public class DatabaseManager {
                     + "so_phong INT NOT NULL,"
                     + "so_giam_thi INT NOT NULL,"
                     + "ghi_chu VARCHAR(255),"
+                    + "ten_danh_sach VARCHAR(255),"
                     + "ngay_tao TIMESTAMP DEFAULT CURRENT_TIMESTAMP)");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS phan_cong_phong ("
                     + "id BIGINT PRIMARY KEY AUTO_INCREMENT,"
@@ -74,6 +96,7 @@ public class DatabaseManager {
             addColumnIfMissing(statement, "phan_cong_phong", "ngay_sinh_gt1", "VARCHAR(20)");
             addColumnIfMissing(statement, "phan_cong_phong", "ngay_sinh_gt2", "VARCHAR(20)");
             addColumnIfMissing(statement, "phan_cong_hanh_lang", "ngay_sinh", "VARCHAR(20)");
+            addColumnIfMissing(statement, "lich_coi_thi", "ten_danh_sach", "VARCHAR(255)");
         }
     }
 
@@ -124,11 +147,12 @@ public class DatabaseManager {
     }
 
     private long insertSchedule(Connection connection, ScheduleRequest request, ScheduleResponse response) throws SQLException {
-        String sql = "INSERT INTO lich_coi_thi(so_phong, so_giam_thi, ghi_chu) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO lich_coi_thi(so_phong, so_giam_thi, ghi_chu, ten_danh_sach) VALUES (?, ?, ?, ?)";
         try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             ps.setInt(1, request.getRoomCount());
             ps.setInt(2, request.getOfficerCount());
             ps.setString(3, response.getMessage());
+            ps.setString(4, response.getScheduleName());
             ps.executeUpdate();
             try (java.sql.ResultSet rs = ps.getGeneratedKeys()) {
                 return rs.next() ? rs.getLong(1) : 0L;

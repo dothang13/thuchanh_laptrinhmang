@@ -11,6 +11,10 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.BorderFactory;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -40,26 +44,53 @@ public class ExamClient extends JFrame {
     private ScheduleResponse lastResponse;
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new ExamClient().setVisible(true));
+        SwingUtilities.invokeLater(() -> {
+            try {
+                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                    if ("Nimbus".equals(info.getName())) {
+                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                        break;
+                    }
+                }
+            } catch (Exception e) {
+                // Ignore and use default
+            }
+            new ExamClient().setVisible(true);
+        });
     }
 
     public ExamClient() {
-        super("Sắp xếp cán bộ coi thi");
+        super("Phần mềm quản lý coi thi");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(1120, 720);
+        setSize(1200, 800);
         setLocationRelativeTo(null);
-        setLayout(new BorderLayout(10, 10));
-        add(header(), BorderLayout.NORTH);
-        add(center(), BorderLayout.CENTER);
-        add(actions(), BorderLayout.SOUTH);
+        setLayout(new BorderLayout(15, 15));
+        
+        // Setup table appearance
+        officerTable.setRowHeight(25);
+        resultTable.setRowHeight(25);
+        officerTable.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 13));
+        resultTable.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 13));
+        officerTable.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+        resultTable.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+
+        JPanel mainContainer = new JPanel(new BorderLayout(10, 10));
+        mainContainer.setBorder(new EmptyBorder(10, 10, 10, 10));
+        mainContainer.add(header(), BorderLayout.NORTH);
+        mainContainer.add(center(), BorderLayout.CENTER);
+        mainContainer.add(actions(), BorderLayout.SOUTH);
+        
+        setContentPane(mainContainer);
     }
 
     private JPanel header() {
         JPanel panel = new JPanel(new BorderLayout());
-        panel.setBackground(new Color(30, 64, 175));
-        JLabel title = new JLabel("  PHẦN MỀM SẮP XẾP CÁN BỘ COI THI");
+        panel.setBackground(new Color(41, 128, 185));
+        panel.setBorder(new EmptyBorder(15, 15, 15, 15));
+        JLabel title = new JLabel("HỆ THỐNG PHÂN CÔNG CÁN BỘ COI THI");
         title.setForeground(Color.WHITE);
-        title.setFont(new Font("Arial", Font.BOLD, 22));
+        title.setFont(new Font("Segoe UI", Font.BOLD, 26));
+        title.setHorizontalAlignment(JLabel.CENTER);
         panel.add(title, BorderLayout.CENTER);
         return panel;
     }
@@ -73,22 +104,33 @@ public class ExamClient extends JFrame {
 
     private JPanel leftPanel() {
         JPanel panel = new JPanel(new BorderLayout(8, 8));
-        JPanel form = new JPanel(new GridLayout(4, 1, 6, 6));
+        panel.setBorder(BorderFactory.createTitledBorder(
+                BorderFactory.createLineBorder(new Color(200, 200, 200)),
+                "Thông tin đầu vào",
+                TitledBorder.LEFT, TitledBorder.TOP,
+                new Font("Segoe UI", Font.BOLD, 15), new Color(50, 50, 50)
+        ));
+
+        JPanel form = new JPanel(new GridLayout(4, 1, 8, 8));
+        form.setBorder(new EmptyBorder(5, 5, 5, 5));
 
         JPanel row0 = new JPanel(new FlowLayout(FlowLayout.LEFT));
         row0.add(new JLabel("IP Server:"));
         row0.add(serverIpField);
-        row0.add(new JLabel("(Nhập IPv4 của máy chủ nếu chạy qua LAN)"));
+        JLabel lanHint = new JLabel("(Nhập IPv4 nếu chạy LAN)");
+        lanHint.setForeground(Color.GRAY);
+        lanHint.setFont(new Font("Segoe UI", Font.ITALIC, 11));
+        row0.add(lanHint);
 
         JPanel row1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        row1.add(new JLabel("Số phòng thi:"));
+        row1.add(new JLabel("Phòng thi:"));
         row1.add(roomSpinner);
-        row1.add(new JLabel("Số giám thị nhập vào:"));
+        row1.add(new JLabel("   Cán bộ:"));
         row1.add(officerSpinner);
 
         JPanel row2 = new JPanel(new BorderLayout(5, 5));
-        JButton choose = new JButton("Chọn file Excel");
-        JButton loadDatabase = new JButton("Tải từ CSDL");
+        JButton choose = createStyledButton("Chọn file Excel", new Color(46, 204, 113));
+        JButton loadDatabase = createStyledButton("Tải từ CSDL", new Color(52, 152, 219));
         choose.addActionListener(e -> chooseExcel());
         loadDatabase.addActionListener(e -> loadFromDatabase());
         fileField.setEditable(false);
@@ -96,7 +138,10 @@ public class ExamClient extends JFrame {
         row2.add(loadDatabase, BorderLayout.EAST);
         row2.add(fileField, BorderLayout.CENTER);
 
-        JLabel hint = new JLabel("Danh sách: cột A mã, cột B họ tên, cột C đơn vị, cột D phòng cũ.");
+        JLabel hint = new JLabel("Cấu trúc Excel: Cột A(Mã), B(Họ tên), C(Đơn vị), D(Phòng cũ)");
+        hint.setFont(new Font("Segoe UI", Font.ITALIC, 12));
+        hint.setForeground(new Color(100, 100, 100));
+
         form.add(row0);
         form.add(row1);
         form.add(row2);
@@ -109,23 +154,28 @@ public class ExamClient extends JFrame {
 
     private JPanel rightPanel() {
         JPanel panel = new JPanel(new BorderLayout(8, 8));
-        JLabel label = new JLabel("Kết quả phân công");
-        label.setFont(new Font("Arial", Font.BOLD, 16));
-        panel.add(label, BorderLayout.NORTH);
+        panel.setBorder(BorderFactory.createTitledBorder(
+                BorderFactory.createLineBorder(new Color(200, 200, 200)),
+                "Kết quả phân công",
+                TitledBorder.LEFT, TitledBorder.TOP,
+                new Font("Segoe UI", Font.BOLD, 15), new Color(50, 50, 50)
+        ));
         panel.add(new JScrollPane(resultTable), BorderLayout.CENTER);
         return panel;
     }
 
     private JPanel actions() {
         JPanel panel = new JPanel(new BorderLayout());
+        panel.setBorder(new EmptyBorder(5, 0, 0, 0));
         JPanel statusPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        connectionLabel.setForeground(new Color(100, 100, 100));
+        connectionLabel.setFont(new Font("Segoe UI", Font.BOLD, 13));
+        connectionLabel.setForeground(new Color(150, 150, 150));
         statusPanel.add(connectionLabel);
 
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        JButton reset = new JButton("Làm mới");
-        JButton arrange = new JButton("Gửi server và sắp xếp");
-        JButton export = new JButton("Xuất Excel");
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 0));
+        JButton reset = createStyledButton("Làm mới", new Color(149, 165, 166));
+        JButton arrange = createStyledButton("Gửi server và sắp xếp", new Color(155, 89, 182));
+        JButton export = createStyledButton("Xuất Excel", new Color(230, 126, 34));
         reset.addActionListener(e -> resetForm());
         arrange.addActionListener(e -> arrange());
         export.addActionListener(e -> exportExcel());
@@ -136,6 +186,19 @@ public class ExamClient extends JFrame {
         panel.add(statusPanel, BorderLayout.WEST);
         panel.add(buttonPanel, BorderLayout.EAST);
         return panel;
+    }
+
+    private JButton createStyledButton(String text, Color bgColor) {
+        JButton btn = new JButton(text);
+        btn.setFont(new Font("Segoe UI", Font.BOLD, 13));
+        btn.setBackground(bgColor);
+        btn.setForeground(Color.WHITE);
+        btn.setFocusPainted(false);
+        btn.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(bgColor.darker()),
+                new EmptyBorder(8, 15, 8, 15)
+        ));
+        return btn;
     }
 
     private void chooseExcel() {
@@ -273,7 +336,10 @@ public class ExamClient extends JFrame {
             return;
         }
         JFileChooser chooser = new JFileChooser();
-        chooser.setSelectedFile(new File("Danh_sach_can_bo_coi_thi.xls"));
+        String defaultName = lastResponse.getScheduleName() != null && !lastResponse.getScheduleName().isEmpty() 
+            ? lastResponse.getScheduleName() + ".xls" 
+            : "Danh_sach_can_bo_coi_thi.xls";
+        chooser.setSelectedFile(new File(defaultName));
         if (chooser.showSaveDialog(this) != JFileChooser.APPROVE_OPTION) {
             return;
         }
