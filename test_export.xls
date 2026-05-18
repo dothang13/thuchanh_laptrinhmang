@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Center"/>
+   <Borders/>
+   <Font ss:FontName="Times New Roman" ss:Size="12"/>
+  </Style>
+  <Style ss:ID="sTitle">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Font ss:FontName="Times New Roman" ss:Size="13" ss:Bold="1"/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="Danh sach 1">
+  <Table>
+   <Column ss:Width="37.5"/>
+   <Column ss:Width="80"/>
+   <Column ss:Width="195"/>
+   <Column ss:Width="60"/>
+   <Column ss:Width="60"/>
+   <Column ss:Width="80"/>
+   <Row>
+    <Cell ss:MergeAcross="5" ss:StyleID="sTitle"><Data ss:Type="String">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</Data></Cell>
+   </Row>
+  </Table>
+ </Worksheet>
+ <Worksheet ss:Name="Giam sat">
+  <Table>
+   <Row>
+    <Cell ss:StyleID="sTitle"><Data ss:Type="String">Hello Worksheet 2</Data></Cell>
+   </Row>
+  </Table>
+ </Worksheet>
+</Workbook>

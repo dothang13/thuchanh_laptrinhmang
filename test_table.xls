@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <Styles>
+  <Style ss:ID="th">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Times New Roman" ss:Size="12" ss:Bold="1"/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="Sheet1">
+  <Table>
+   <Row>
+    <Cell ss:MergeDown="1" ss:StyleID="th"><Data ss:Type="String">STT</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="th"><Data ss:Type="String">Mã GV</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="th"><Data ss:Type="String">Họ và tên</Data></Cell>
+    <Cell ss:MergeAcross="1" ss:StyleID="th"><Data ss:Type="String">GIÁM THỊ</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="th"><Data ss:Type="String">Phòng thi</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:Index="4" ss:StyleID="th"><Data ss:Type="String">Giám thị 1</Data></Cell>
+    <Cell ss:StyleID="th"><Data ss:Type="String">Giám thị 2</Data></Cell>
+   </Row>
+  </Table>
+ </Worksheet>
+</Workbook>
